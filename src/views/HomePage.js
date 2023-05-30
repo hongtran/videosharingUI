@@ -1,14 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Videoshareds from '../components/Videoshareds';
 import Header from '../components/Header';
-import '../App.css';
+import { AuthContext } from '../App';
 
 function HomePage() {
+    const { state } = React.useContext(AuthContext);
     return (
         <div className='container'>
             <Header/>
             <hr/>
-            <Videoshareds />
+            {state.isLogined ? <Videoshareds /> : <h3>Welcome</h3>}
         </div>
     );
 }

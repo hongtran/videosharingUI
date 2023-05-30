@@ -1,41 +1,34 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect} from 'react';
 import LoginForm from './LoginForm';
 import UserAction from './UserAction';
 import '../App.css';
+import { AuthContext } from '../App';
+
 
 function Header() {
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const [user, setUser] = useState({});
+    const {state: authState} = React.useContext(AuthContext);
+    const {dispatch} = React.useContext(AuthContext);
 
-    useEffect(() => {
+    useEffect( () => {
         const loggedInUser = localStorage.getItem('user');
+        const token = localStorage.getItem('token');
         console.log('loggedInUser:', loggedInUser);
         if (loggedInUser) {
-            const foundUser = JSON.parse(loggedInUser);
-            setUser(foundUser);
-            setIsLoggedIn(true);
+            const user = JSON.parse(loggedInUser);
+            dispatch({
+                type: 'LOGIN',
+                payload: {user, token, isLogined: true},
+            });
         }
     }, []);
-
-    const handleLogout = () => {
-        setIsLoggedIn(false);
-        setUser({});
-        localStorage.clear();
-    };
-
-    const handleLogin = (user) => {
-        setIsLoggedIn(true);
-        setUser(user);
-    };
-
     
     return (
         <div className='header'>
             <h1>Funny Videos</h1>
-            {isLoggedIn ? (
-                <UserAction user={user} onLogout={handleLogout} />
+            {authState.isLogined ? (
+                <UserAction user={authState.user} />
             ) : (
-            <LoginForm onLogin={handleLogin} />
+            <LoginForm />
             )}
         </div>
     );

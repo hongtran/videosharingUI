@@ -7,8 +7,13 @@ function Videoshareds() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await api.get('/videoshareds');
-      setVideos(result.data);
+      try {
+        const result = await api.get('/videoshareds');
+        setVideos(result.data);
+      }
+      catch (error) {
+        console.error('Error fetching data', error);
+      }
     };
     fetchData();
   }, []);

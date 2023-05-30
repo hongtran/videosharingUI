@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../App.css';
 import api from '../api';
+import { AuthContext } from '../App';
 
-const LoginForm = ({onLogin}) => {
+const LoginForm = () => {
+  const { dispatch } = React.useContext(AuthContext);
+  const { state: authState } = React.useContext(AuthContext);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
   };
@@ -21,10 +23,10 @@ const LoginForm = ({onLogin}) => {
     try {
     const response = await api.post('/users/login', { email, password });
     console.log('Login successful!', response.data);
-    localStorage.setItem('token', response.data.token);
-    localStorage.setItem('user', JSON.stringify(response.data.user));
-    onLogin(response.data.user);
-    // Perform any necessary actions after successful login, such as redirecting to a new page
+    dispatch({
+        type: 'LOGIN',
+        payload: response.data,
+    });
     } catch (error) {
     console.error('Login failed!', error.response.data);
     // Perform any necessary actions after failed login, such as displaying an error message
