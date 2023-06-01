@@ -53,7 +53,7 @@ function App() {
       return;
     }
     api.defaults.headers.common['Authorization'] = 'Bearer ' + state.token;
-    connect("ws://videosharing.herokuapp.com/cable" + "?token=" + state.token);
+    connect(process.env.REACT_APP_WSS_URL + "?token=" + state.token);
     subscribe({channel: 'NotificationsChannel'}, {
         connected: () => {
             console.log("connected");
