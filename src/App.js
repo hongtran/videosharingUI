@@ -53,7 +53,7 @@ function App() {
       return;
     }
     api.defaults.headers.common['Authorization'] = 'Bearer ' + state.token;
-    connect("ws://localhost:3000/cable" + "?token=" + state.token);
+    connect("ws://videosharing.herokuapp.com/cable" + "?token=" + state.token);
     subscribe({channel: 'NotificationsChannel'}, {
         connected: () => {
             console.log("connected");
