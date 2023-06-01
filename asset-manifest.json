@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/videosharingUI/static/css/main.010327b6.css",
-    "main.js": "/videosharingUI/static/js/main.60080f73.js",
+    "main.js": "/videosharingUI/static/js/main.45a6f47d.js",
     "static/js/787.8d0c05d8.chunk.js": "/videosharingUI/static/js/787.8d0c05d8.chunk.js",
     "index.html": "/videosharingUI/index.html",
     "main.010327b6.css.map": "/videosharingUI/static/css/main.010327b6.css.map",
-    "main.60080f73.js.map": "/videosharingUI/static/js/main.60080f73.js.map",
+    "main.45a6f47d.js.map": "/videosharingUI/static/js/main.45a6f47d.js.map",
     "787.8d0c05d8.chunk.js.map": "/videosharingUI/static/js/787.8d0c05d8.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.010327b6.css",
-    "static/js/main.60080f73.js"
+    "static/js/main.45a6f47d.js"
   ]
 }
