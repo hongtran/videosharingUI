@@ -79,8 +79,8 @@ function App() {
       >
       <Switch>
         {/* <Route path="/videoshareds" component={Videoshareds}/> */}
-        <Route exact path="/videosharingUI" component={HomePage}/>
-        <Route exact path="/videosharingUI/share" component={Share}/>
+        <Route exact path="/" component={HomePage}/>
+        <Route path="/share" component={Share}/>
       </Switch>
       </AuthContext.Provider>
     </Router>
