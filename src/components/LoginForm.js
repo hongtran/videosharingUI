@@ -42,6 +42,7 @@ const LoginForm = () => {
         <input
           type="email"
           id="email"
+          name="email"
           value={email}
           onChange={handleEmailChange}
           required
@@ -52,12 +53,13 @@ const LoginForm = () => {
         <input
           type="password"
           id="password"
+          name="password"
           value={password}
           onChange={handlePasswordChange}
           required
         />
       </div>
-      <button type="submit">Login/Register</button>
+      <button name='login' type="submit">Login/Register</button>
     </form>
   );
 };
