@@ -15,7 +15,7 @@ const UserAction = ({user}) => {
     return (
         <div className='user-actions'>
             <p>Welcome {user.email} </p>
-            <a href="/share">Share a movie</a>
+            <a href="/videosharingUI/share">Share a movie</a>
             <button onClick={() => history.push('/videosharingUI/share')}>Share a movie</button>
             <button type="submit" onClick={handleLogout}>Logout</button>
         </div>
