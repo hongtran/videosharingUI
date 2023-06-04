@@ -17,8 +17,6 @@ const LoginForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Email:', email);
-    console.log('Password:', password);
     try {
     const response = await api.post('/users/login', { email, password });
     dispatch({
@@ -34,7 +32,7 @@ const LoginForm = () => {
   };
 
   return (
-    <form className='login-form' onSubmit={handleSubmit}>
+    <form data-testid='login-form' className='login-form' onSubmit={handleSubmit}>
       <div>
         <label htmlFor="email">Email:</label>
         <input
