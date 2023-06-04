@@ -5,7 +5,6 @@ import { AuthContext } from '../App';
 
 const LoginForm = () => {
   const { dispatch } = React.useContext(AuthContext);
-  const { state: authState } = React.useContext(AuthContext);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const handleEmailChange = (e) => {
@@ -22,7 +21,6 @@ const LoginForm = () => {
     console.log('Password:', password);
     try {
     const response = await api.post('/users/login', { email, password });
-    console.log('Login successful!', response.data);
     dispatch({
         type: 'LOGIN',
         payload: response.data,

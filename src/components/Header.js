@@ -6,8 +6,7 @@ import { AuthContext } from '../App';
 
 
 function Header() {
-    const {state: authState} = React.useContext(AuthContext);
-    const {dispatch} = React.useContext(AuthContext);
+    const {state, dispatch} = React.useContext(AuthContext);
 
     useEffect( () => {
         const loggedInUser = localStorage.getItem('user');
@@ -25,8 +24,8 @@ function Header() {
     return (
         <div className='header'>
             <h1>Funny Videos</h1>
-            {authState.isLogined ? (
-                <UserAction user={authState.user} />
+            {state.isLogined ? (
+                <UserAction user={state.user} />
             ) : (
             <LoginForm />
             )}
