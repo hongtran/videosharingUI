@@ -55,11 +55,11 @@ describe('LoginForm', () => {
     const emailInput = getByLabelText(/email/i);
     const passwordInput = getByLabelText(/password/i);
     const submitButton = getByRole('button', { name: /login/i });
-    act(() => {
+    await act(() => {
         fireEvent.change(emailInput, { target: { value: 'test@example.com' } });
         fireEvent.change(passwordInput, { target: { value: 'password' } });
     });
-    act(() => {
+    await act(() => {
         fireEvent.click(submitButton);
     });
     

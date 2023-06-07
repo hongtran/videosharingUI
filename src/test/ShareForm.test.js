@@ -7,14 +7,14 @@ import api from '../api';
 import { act } from 'react-dom/test-utils';
 
 describe('ShareForm', () => {
-    test('should update title value when user types in the title input', () => {
+    test('should update title value when user types in the title input', async () => {
         const { getByLabelText } = render(
         <AuthContext.Provider value={{ dispatch: jest.fn() }}>
             <ShareForm />
         </AuthContext.Provider>
         );
         const titleInput = getByLabelText(/title/i);
-        act(() => {
+        await act(() => {
             fireEvent.change(titleInput, { target: { value: 'test title' } });
         });
         expect(titleInput.value).toBe('test title');
@@ -37,11 +37,11 @@ describe('ShareForm', () => {
         const urlInput = getByLabelText(/url/i);
         const titleInput = getByLabelText(/title/i);
         const submitButton = getByRole('button', { name: /share/i });
-        act(() => {
+        await act(() => {
             fireEvent.change(urlInput, { target: { value: 'test-url' } });
             fireEvent.change(titleInput, { target: { value: 'test-title' } });
         });
-        act(() => {
+        await act(() => {
             fireEvent.click(submitButton);
         });
         await waitFor(() => expect(api.post).toHaveBeenCalledTimes(1));
